@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import '../index.css';
 
 const todos = [
@@ -13,10 +13,18 @@ const todos = [
 ];
 
 const Home = () => {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    console.log("Hey", count);
+  }, [count]);
 
   return (
     <div>
       <h1 className="header">Home Screen</h1>
+      <button onClick={() => setCount(count + 1)}>+</button>
+      <h1>{count}</h1>
+      <button onClick={() => setCount(count - 1)}>-</button>
       <div className="cards-container">
         {todos.map((t, i) => {
           return (
